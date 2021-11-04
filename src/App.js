@@ -1,23 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import { onAuthStateChanged } from '@firebase/auth';
+import { auth } from './config/firebase';
+import Auth from './components/Auth';
+import Dashboard from './components/Dashboard';
+import './assets/App.css';
 
 function App() {
+
+  const [user, setUser] = useState(false);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (u) => {
+      if (u) {
+        console.log(`username: ${u.displayName} email: ${u.email} signed in`);
+        setUser(true);
+      } else {
+        setUser(false);
+        console.log("user signed out");
+      }
+    });
+  }, [setUser]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="app">
+      {user ? <Dashboard /> : <Auth />}
     </div>
   );
 }
