@@ -3,18 +3,37 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid black;
+    box-shadow: 0 2px 4px 0px grey;
 }
-#navbar h3{
+.navbar-logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar-logo h3{
+    pointer-events: none;
+    font-size: 22px;
+    font-weight: 700;
+    color: #7400ca;
+}
+.navbar-logo > img{
     margin: 0 10px;
+    height: 3rem;
+    width: 3rem;
 }
 .btn-signout{
     display: flex;
     align-items: center;
     border-radius: 2px;
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 600;
     padding: 5px;
-    margin: 0 10px;
-    border: 1px solid black;
+    margin: 0 20px;
+    color: red;
+    border: 1.5px solid red;
+    transition: all 0.3s ease;
+}
+.btn-signout:hover{
+    color: white;
+    background-color: red;
 }

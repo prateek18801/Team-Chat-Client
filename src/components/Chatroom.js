@@ -5,6 +5,7 @@ import { auth } from '../config/firebase';
 import Message from './Message';
 import Alert from './Alert';
 
+import notification from '../assets/notification.mp3';
 import '../assets/Chatroom.css';
 
 const ROUTE = process.env.SERVER_ROUTE || "http://localhost:5000";
@@ -13,6 +14,7 @@ let socket;
 export default function Chatroom() {
 
     const user = auth.currentUser;
+    const audio = new Audio(notification);
     const bottomRef = useRef(null);
     const [msgTxt, setMsgTxt] = useState('');
     const [msgList, setMsgList] = useState([]);
@@ -28,23 +30,22 @@ export default function Chatroom() {
 
     useEffect(() => {
         socket.on("user_joined", (user) => {
-            console.log(`user joined ${user}`);
             const date = new Date();
             const dnt = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '@' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
-            console.log(user);
             setMsgList(msgList => [...msgList, { class: "alert", message: "joined", user: user.name, email: user.email, timestamp: dnt }]);
+            audio.play();
         });
 
         socket.on("user_disconnected", (user) => {
-            console.log(`user left ${user}`);
             const date = new Date();
             const dnt = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '@' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
             setMsgList(msgList => [...msgList, { class: "alert", message: "left", user: user.name, email: user.email, timestamp: dnt }]);
+            audio.play();
         });
 
         socket.on("recieve", (data) => {
-            console.log(data);
             setMsgList(msgList => [...msgList, data]);
+            audio.play();
         });
     }, []);
 
