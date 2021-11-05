@@ -21,6 +21,10 @@
     height: 3rem;
     width: 3rem;
 }
+.navbar-signout{
+    display: flex;
+    align-items: center;
+}
 .btn-signout{
     display: flex;
     align-items: center;
@@ -29,6 +33,7 @@
     font-weight: 600;
     padding: 5px;
     margin: 0 20px;
+    height: fit-content;
     color: red;
     border: 1.5px solid red;
     transition: all 0.3s ease;

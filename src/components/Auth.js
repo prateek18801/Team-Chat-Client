@@ -1,5 +1,5 @@
-import { GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
-import { auth } from "../config/firebase";
+import { GoogleAuthProvider, signInWithRedirect } from '@firebase/auth';
+import { auth } from '../config/firebase';
 
 import google from '../assets/google.svg';
 import bdcoe from '../assets/bdcoe.png';
