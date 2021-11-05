@@ -14,7 +14,7 @@ export default function Auth() {
     return (
         <div id="auth">
             <div className="box">
-                <h4>Only Members of BDCoE</h4>
+                <h4>BDCoE Team-Chat</h4>
                 <button className="btn btn-signin" onClick={signIn}><img src={google} alt="google" /> Sign in with Google</button>
             </div>
         </div>

@@ -1,0 +1,20 @@
+#navbar{
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+}
+#navbar h3{
+    margin: 0 10px;
+}
+.btn-signout{
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px;
+    margin: 0 10px;
+    border: 1px solid black;
+}

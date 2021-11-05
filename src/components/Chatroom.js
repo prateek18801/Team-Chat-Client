@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { io } from 'socket.io-client';
 import { auth } from '../config/firebase';
 
@@ -13,6 +13,7 @@ let socket;
 export default function Chatroom() {
 
     const user = auth.currentUser;
+    const bottomRef = useRef(null);
     const [msgTxt, setMsgTxt] = useState('');
     const [msgList, setMsgList] = useState([]);
 
@@ -30,6 +31,7 @@ export default function Chatroom() {
             console.log(`user joined ${user}`);
             const date = new Date();
             const dnt = date.getDate() + '/' + (date.getMonth() + 1) + '/' + date.getFullYear() + '@' + date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds();
+            console.log(user);
             setMsgList(msgList => [...msgList, { class: "alert", message: "joined", user: user.name, email: user.email, timestamp: dnt }]);
         });
 
@@ -55,6 +57,12 @@ export default function Chatroom() {
         setMsgTxt('');
     }
 
+
+    useEffect(() => {
+        bottomRef.current?.scrollIntoView({ behavior: "smooth" })
+    }, [msgList]);
+       
+
     return (
         <div id="chatroom">
             <div className="messages">
@@ -66,10 +74,11 @@ export default function Chatroom() {
                         <Alert userName={m.user} message={m.message} key={i} />
                     )
                 })}
+                <div ref={bottomRef} />
             </div>
             <form id="chat" onSubmit={(e) => { e.preventDefault() }}>
                 <input className="inp inp-send" type="text" placeholder="Message" value={msgTxt} onChange={(e) => { setMsgTxt(e.target.value) }} />
-                <button className="btn btn-send" onClick={sendMsg}><span class="material-icons-round">send</span></button>
+                <button className="btn btn-send" onClick={sendMsg}><span className="material-icons-round">send</span></button>
             </form>
         </div>
     )
