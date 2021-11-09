@@ -1,0 +1,7 @@
+#task{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    margin: 10px 0;
+    background-color: #ff9e00;
+}
