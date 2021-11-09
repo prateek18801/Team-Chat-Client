@@ -5,3 +5,50 @@
     margin: 10px 0;
     background-color: #ff9e00;
 }
+.task-header{
+    display: grid;
+    align-items: center;
+    background-color: white;
+    padding: 2px;
+    grid-template-columns: 1fr 1fr 10fr 1fr 1fr;
+}
+.task-header button{
+    display: grid;
+    place-items: center;
+    border: none;
+    height: 2rem;
+    width: 2rem;
+}
+.expand-task{
+    color: #ff6d00;
+}
+.task-status{
+    display: grid;
+    place-items: center;
+    color: #ff6d00;
+}
+.task-title{
+    padding: 0 5px;
+}
+.check-task{
+    color: green;
+}
+.check-task:hover{
+    color: white;
+    background-color: green;
+}
+.delete-task{
+    color: red;
+}
+.delete-task:hover{
+    color: white;
+    background-color: red;
+}
+
+/* GPC */
+.display-none{
+    display: none;
+}
+.rotate{
+    transform: rotate(-90deg);
+}
