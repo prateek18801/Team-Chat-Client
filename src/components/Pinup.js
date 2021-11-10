@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { collection, getDocs, addDoc, query, orderBy, where, onSnapshot } from 'firebase/firestore';
+import { collection, addDoc, query, orderBy, onSnapshot } from 'firebase/firestore';
 import { auth, db } from '../config/firebase';
 
 import Task from './Task';
@@ -45,7 +45,7 @@ export default function Pinup() {
                 if (change.type === "removed") {
                     console.log("Removed task: ", doc.data());
                     console.log(doc.id);
-                    setTasks(tasks => tasks.filter((t)=> t.id !== doc.id));  
+                    setTasks(tasks => tasks.filter((t) => t.id !== doc.id));
                 }
             });
         });
@@ -91,9 +91,11 @@ export default function Pinup() {
                 :
                 <form id="add-task" onSubmit={(e) => { e.preventDefault() }}>
                     <input className="inp inp-title" type="text" placeholder="title" value={title} onChange={(e) => { setTitle(e.target.value) }} />
-                    <button className="btn btn-addtask" type="button" onClick={addTask}>add task</button>
-                    <input className="inp inp-desc" type="text" placeholder="description" value={description} onChange={(e) => { setDescription(e.target.value) }} />
-                    <input className="inp inp-date" type="datetime-local" value={due} onChange={(e) => { setDue(e.target.value) }} />
+                    <textarea className="inp inp-desc" placeholder="description" value={description} rows="3" onChange={(e) => { setDescription(e.target.value) }}></textarea>
+                    <label htmlFor="inp-date" id="inp-date-label" >Deadline:</label>
+                    <input className="inp" id="inp-date" type="datetime-local" value={due} onChange={(e) => { setDue(e.target.value) }} />
+                    <button className="btn" id="btn-addtask" type="button" onClick={addTask}><span className="material-icons-round">add</span></button>
+                    <button className="btn" id="float-cross" onClick={() => { setDisplay(!display) }}><span className="material-icons-round">close</span></button>
                 </form>
             }
         </div>

@@ -5,9 +5,10 @@
     height: 90vh;
     background: url('../assets/pinupbg.svg');
     position: relative;
+    overflow: hidden;
 }
 #pinup > h2{
-    margin: 5px 0;
+    margin: 10px 0 5px 0;
     padding: 5px;
     border-radius: 3px;
     background-color: #ff6d00;
@@ -60,25 +61,86 @@
 }
 
 #add-task{
-    display: grid;
-    grid-template-columns: 9fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     position: absolute;
     bottom: 10px;
-    width: 80%;
+    width: 90%;
     border-radius: 10px;
     background-color: white;
+    box-shadow: 0 0 0 100vh rgba(0, 0, 0, 0.6);
+}
+#add-task button{
+    display: grid;
+    place-items: center;
+    height: 2.5rem;
+    width: 2.5rem;
 }
 .inp-title{
+    font-size: 1rem;
+    padding: 5px;
+    margin: 5px;
     border: none;
     border-bottom: 2px solid #ff6d00;
 }
 .inp-desc{
+    font-size: 1rem;
+    padding: 5px;
+    margin: 5px;
     border: none;
     border-bottom: 2px solid #ff6d00;
-    grid-column: 1 / 3;
 }
-.inp-date{
-    display: flex;
-    flex-direction: column;
+#inp-date{
+    border: 2px solid #ff6d00;
+    font-size: 1rem;
+    padding: 5px;
+    margin: 5px;
+    width: 60%;
+}
+#inp-date-label{
+    font-size: 1rem;
+    margin: 5px 5px 0 5px;
+}
+
+
+#btn-addtask{
+    border: 2px solid #ff6d00;
+    border-radius: 5px;
+    background-color: white;
+    color: #ff6d00;
+    margin: 5px;
+    align-self: center;
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    transition: all 0.2s ease;
+}
+#btn-addtask:hover{
+    background-color: #ff6d00;
+    color: white;
+    transform: scale(90%);
+}
+#btn-addtask > span{
+    font-size: 2rem;
+}
+
+
+#float-cross{
+    position: absolute;
+    top: -3rem;
+    right: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    background: none;
+    background-color: #ff6d00;
+    color: white;
+    box-shadow: 0 0 5px 0 grey;
+    transition: all 0.2s ease;
+}
+#float-cross:hover{
+    transform: scale(90%);
+}
+#float-cross > span{
+    position: absolute;
+    font-size: 2rem;
 }
